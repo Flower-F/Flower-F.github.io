@@ -13,6 +13,10 @@
   <div class="container{%- if theme.motion.enable %} use-motion{%- endif %}">
     <div class="headband"></div>
 
+    <div class="bg_content">
+      <canvas id="canvas"></canvas>
+    </div>
+
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner">{% include '_partials/header/index.swig' %}</div>
     </header>
@@ -58,3 +62,6 @@
   {%- endif %}
 </body>
 </html>
+
+<script type="text/javascript" src="/js/love.js"></script>
+<script type="text/javascript" src="/js/dynamic_bg.js"></script>

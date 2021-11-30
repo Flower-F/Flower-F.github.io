@@ -163,11 +163,11 @@ sidebar:
 # Sidebar Avatar
 avatar:
   # Replace the default image and set the url here.
-  url: #/images/avatar.gif
+  url: /images/avatar.gif
   # If true, the avatar will be dispalyed in circle.
-  rounded: false
+  rounded: true
   # If true, the avatar will be rotated with the cursor.
-  rotated: false
+  rotated: true
 
 # Posts / Categories / Tags in sidebar.
 site_state: true
@@ -407,44 +407,90 @@ github_banner:
 # Arial | Tahoma | Helvetica | Times New Roman | Courier New | Verdana | Georgia | Palatino | Garamond | Comic Sans MS | Trebuchet MS
 # ---------------------------------------------------------------
 
+# font:
+#   enable: false
+
+#   # Uri of fonts host, e.g. https://fonts.googleapis.com (Default).
+#   host:
+
+#   # Font options:
+#   # `external: true` will load this font family from `host` above.
+#   # `family: Times New Roman`. Without any quotes.
+#   # `size: x.x`. Use `em` as unit. Default: 1 (16px)
+
+#   # Global font settings used for all elements inside <body>.
+#   global:
+#     external: true
+#     family: Lato
+#     size:
+
+#   # Font settings for site title (.site-title).
+#   title:
+#     external: true
+#     family:
+#     size:
+
+#   # Font settings for headlines (<h1> to <h6>).
+#   headings:
+#     external: true
+#     family:
+#     size:
+
+#   # Font settings for posts (.post-body).
+#   posts:
+#     external: true
+#     family:
+
+#   # Font settings for <code> and code blocks.
+#   codes:
+#     external: true
+#     family:
 font:
-  enable: false
-
+  enable: true
+ 
   # Uri of fonts host, e.g. https://fonts.googleapis.com (Default).
-  host:
-
+  # 使用烧饼博客的CDN
+  host: https://fonts.loli.net
+ 
   # Font options:
   # `external: true` will load this font family from `host` above.
   # `family: Times New Roman`. Without any quotes.
   # `size: x.x`. Use `em` as unit. Default: 1 (16px)
-
+ 
   # Global font settings used for all elements inside <body>.
+  # 全局字体设置
   global:
     external: true
-    family: Lato
-    size:
-
+    #family: EB Garamond
+    family: Noto Serif SC
+    size: 0.9
+ 
   # Font settings for site title (.site-title).
+  # .site-title 站点标题字体设置
   title:
     external: true
-    family:
+    family: Lobster Two
     size:
-
+ 
   # Font settings for headlines (<h1> to <h6>).
+  # 文章标题字体设置
   headings:
     external: true
-    family:
+    #family: Roboto Slab
+    family: EB Garamond
     size:
-
+ 
   # Font settings for posts (.post-body).
+  # 文章页面字体设置
   posts:
     external: true
-    family:
-
+    #family: Roboto Slab
+ 
   # Font settings for <code> and code blocks.
+  # 代码块字体设置
   codes:
     external: true
-    family:
+    family: Source Code Pro
 
 
 # ---------------------------------------------------------------
@@ -689,9 +735,9 @@ cnzz_siteid:
 # AppID and AppKey are recommended to be the same as valine's for counter compatibility.
 # Do not enable both `valine.visitor` and `leancloud_visitors`.
 leancloud_visitors:
-  enable: false
-  app_id: # <your app id>
-  app_key: # <your app key>
+  enable: true
+  app_id: KDfducB8SxPnkLaWp3IDrYkW-gzGzoHsz
+  app_key: CfgFpbeT1UKlX7K2k9fQnuI6
   # Required for apps from CN region
   server_url: # <your server url>
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
@@ -728,7 +774,7 @@ busuanzi_count:
 # Algolia Search
 # For more information: https://www.algolia.com
 algolia_search:
-  enable: false
+  enable: true
   hits:
     per_page: 10
   labels:
@@ -855,7 +901,7 @@ pace:
 three:
   enable: false
   three_waves: false
-  canvas_lines: false
+  canvas_lines: true
   canvas_sphere: false
 
 # Canvas-ribbon
@@ -867,7 +913,13 @@ canvas_ribbon:
   alpha: 0.6 # The transparency of the ribbon
   zIndex: -1 # The display level of the ribbon
 
-
+canvas_nest:
+  enable: true    #开启canvas
+  onmobile: true # 是否在移动站开启canvas
+  color: '34,34,34' # 颜色值
+  opacity: 0.5 # 数值 0~1 ，线条透明度
+  zIndex: -1 # 背景叠层大小，-1代表放在文章的后面
+  count: 200 # 线条数量
 #! ---------------------------------------------------------------
 #! DO NOT EDIT THE FOLLOWING SETTINGS
 #! UNLESS YOU KNOW WHAT YOU ARE DOING
@@ -953,8 +1005,6 @@ vendors:
   # Algolia Search
   # algolia_search: //cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js
   # instant_search: //cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js
-  algolia_search:
-  instant_search:
 
   # Mermaid
   # mermaid: //cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js
