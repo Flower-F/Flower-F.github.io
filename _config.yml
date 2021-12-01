@@ -125,13 +125,31 @@ live2d:
   react:
     opacity: 0.7
 
-algolia:
-  applicationID: 9O4LC9L1Y1
-  apiKey: 480cc8b63c99940bf7e10b6fa572c375
-  adminApiKey: bd99640965a84aa88bd59c86c316a834
-  indexName: hexo_blogs
-  chunkSize: 5000
+# algolia:
+#   applicationID: 
+#   apiKey: 
+#   adminApiKey: 
+#   indexName: 
+#   chunkSize: 5000
 
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 plugins: hexo-generate-feed
+
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
+
+symbols_count_time:
+  #文章内是否显示
+  symbols: true
+  time: false
+  # 网页底部是否显示
+  total_symbols: true
+  total_time: false
+  exclude_codeblock: false
+  awl: 4
+  wpm: 275
+  suffix: 'mins.'
