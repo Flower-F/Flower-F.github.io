@@ -217,6 +217,18 @@
       {{ partial('_partials/post/post-related.swig') }}
     {%- endif %}
 
+    <div>
+      {% if not is_index %}
+        {% include 'my-copyright.swig' %}
+      {% endif %}
+    </div>
+
+    <div>
+      {% if not is_index %}
+        {% include 'passage-end-tag.swig' %}
+      {% endif %}
+    </div>
+
     {%- if not is_index %}
       {{- next_inject('postBodyEnd') }}
 
@@ -241,7 +253,7 @@
           {%- endif %}
           <div class="post-tags">
             {%- for tag in post.tags.toArray() %}
-              <a href="{{ url_for(tag.path) }}" rel="tag">{{ tag_indicate }} {{ tag.name }}</a>
+              <a href="{{ url_for(tag.path) }}" rel="tag"><i class="fa fa-tag"></i> {{ tag.name }}</a>
             {%- endfor %}
           </div>
         {%- endif %}
