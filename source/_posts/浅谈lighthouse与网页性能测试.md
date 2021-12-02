@@ -67,7 +67,7 @@ CLS（Cumulative Layout Shift）是一个衡量页面内容是否稳定的指标
 
 # lighthouse 的优势
 
-lighthouse 在指出性能不足之处的时候，一般还会具体之处到底是什么地方做得不够好，例如这次分析，
+lighthouse 在指出性能不足之处的时候，一般还会具体指出哪些地方可以进行优化，例如这次分析，
 
 ![](https://cdn.jsdelivr.net/gh/Flower-F/picture@main/img/125840.jpg)
 
