@@ -11,17 +11,19 @@ author: Flower-F
 
 简单来说，一方面，提高用户体验；另一方面，提高网页的 SEO 排名。
 
-![](https://cdn.jsdelivr.net/gh/Flower-F/picture@main/img/lighthouse.jpg)
+
 
 # 整体分析
 
-先来看整体的分析情况，Performance 是 61 分，SEO 是 97 分。
+![](https://cdn.jsdelivr.net/gh/Flower-F/picture@main/img/lighthouse.jpg)
 
-![](https://cdn.jsdelivr.net/gh/Flower-F/picture@main/img/115537.jpg)
+先来看整体的分析情况，Performance 是 61 分，SEO 是 97 分。
 
 性能只能说很不理想，但是可惜的是我没有在新建博客的第一时间就先测一下，以至于我不太清楚影响性能的是 hexo + next 本身的问题，还是因为我后来做的美化导致的。另一方面 hexo 是模板建站，我对于里面的源码基本毫不了解，想要优化也不知道从何做起。总之先来看看这 6 个指标吧。
 
 # lighthouse 分析网页的六大指标
+
+![](https://cdn.jsdelivr.net/gh/Flower-F/picture@main/img/115537.jpg)
 
 简单介绍一下这 6 个指标：
 
