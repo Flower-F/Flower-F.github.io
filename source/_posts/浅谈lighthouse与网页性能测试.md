@@ -76,11 +76,7 @@ lighthouse 在指出性能不足之处的时候，一般还会具体之处到底
 接下来我先考虑的是要把之前鼠标的交互动画减少一些，然后想办法压缩一下静态资源。去除无用 CSS 和 JS 稍微有些难办，因为里面的代码对我来说就像一个黑盒一样，我也没有足够的课余时间去阅读源码。
 
 参考文章：
-
 https://www.cnblogs.com/frank-link/p/15243695.html
-
 https://www.cnblogs.com/loveyt/p/13582359.html
-
 https://blog.csdn.net/m0_37411791/article/details/106394219
-
 https://zhuanlan.zhihu.com/p/20276064
