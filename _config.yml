@@ -134,7 +134,7 @@ live2d:
 
 # Extensions
 ## Plugins: http://hexo.io/plugins/
-plugins: hexo-generate-feed
+plugins: [hexo-generate-feed]
 
 search:
   path: search.xml
@@ -153,3 +153,13 @@ symbols_count_time:
   awl: 4
   wpm: 275
   suffix: 'mins.'
+
+
+nofollow:
+  enable: true
+  field: site
+  exclude:
+    - 'flower-f.github.io'
+#enable 是否启动插件，默认为true
+#field  插件的处理范围，默认为site。可选post或site; post仅处理文章内容，site处理全站
+#exclude 域名白名单
