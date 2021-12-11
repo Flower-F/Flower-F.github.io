@@ -52,6 +52,156 @@ BigInt 不能与数字互换操作。否则，将抛出 TypeError。
 - 获取一个字符串的子串可通过选择个别字母或者使用 String.substr()
 - 两个字符串的连接使用连接操作符 +
 
+# Symbol
+## 出现的原因
+ES5 的对象属性名都是字符串，这容易造成属性名的冲突。ES6 引入了一种新的原始数据类型Symbol，表示独一无二的值。Symbol 值通过Symbol() 函数生成。这就是说，对象的属性名现在可以有两种类型，一种是原来就有的字符串，另一种就是新增的 Symbol 类型。**凡是属性名属于 Symbol 类型，就都是独一无二的，可以保证不会与其他属性名产生冲突。**
+
+```js
+let s = Symbol();
+console.log(typeof s); // symbol
+```
+
+注意：**Symbol函数前不能使用new命令**，否则会报错。这是因为生成的 Symbol 是一个原始类型的值，不是对象。也就是说，由于 Symbol 值不是对象，所以不能添加属性。
+
+## 描述
+Symbol函数可以接受一个字符串作为参数，表示对 Symbol 实例的描述，主要是为了在控制台显示，或者转为字符串时，比较容易区分。
+```js
+let s1 = Symbol('foo');
+let s2 = Symbol('bar');
+
+console.log(s1); // Symbol(foo)
+console.log(s2); // Symbol(bar)
+
+console.log(s1.toString()); // "Symbol(foo)"
+console.log(s2.toString()); // "Symbol(bar)"
+```
+
+如果 Symbol 的参数是一个对象，就会调用该对象的 toString() 方法，将其转为字符串，然后才生成一个 Symbol 值。
+```js
+const obj = {
+  name: 'Jack'
+};
+const s = Symbol(obj);
+console.log(s); // Symbol([object Object])
+```
+
+```js
+const obj = {
+  name: 'Jack',
+  toString() {
+      return 'hello'
+  }
+};
+const s = Symbol(obj);
+console.log(s); // Symbol(hello)
+```
+
+注意，Symbol函数的参数只是表示对当前 Symbol 值的描述，因此相同参数的Symbol函数的返回值也是不相等的。
+
+```js
+// 没有参数的情况
+let s1 = Symbol();
+let s2 = Symbol();
+
+console.log(s1 === s2); // false
+
+// 有参数的情况
+let s1 = Symbol('foo');
+let s2 = Symbol('foo');
+
+console.log(s1 === s2); // false
+```
+
+## 类型转换
+Symbol 值不能与其他类型的值进行运算，否则会报错。
+
+但是，Symbol 值可以显式转为字符串。
+```js
+let s = Symbol('My symbol');
+console.log(String(s)); // 'Symbol(My symbol)'
+console.log(s.toString()); // 'Symbol(My symbol)'
+```
+
+另外，Symbol 值也可以转为布尔值。
+```js
+let s = Symbol();
+console.log(Boolean(s)); // true
+console.log(!s);  // false
+```
+
+## 应用
+Symbol 值可以作为标识符，用于对象的属性名，就能保证不会出现同名的属性。这对于**一个对象由多个模块构成的情况**非常有用，能防止某一个键被不小心改写或覆盖。
+```js
+let mySymbol = Symbol();
+
+// 第一种写法
+let a = {};
+a[mySymbol] = 'Hello!';
+
+// 第二种写法
+let a = {
+  [mySymbol]: 'Hello!'
+};
+```
+
+注意，Symbol 值作为对象属性名时，不能用点运算符。
+```js
+const mySymbol = Symbol();
+const a = {};
+
+a.mySymbol = 'Hello!';
+console.log(a[mySymbol]); // undefined
+console.log(a['mySymbol']); // "Hello!"
+```
+上面代码中，因为点运算符后面总是字符串，所以不会读取mySymbol作为标识名所指代的那个值，导致a的属性名实际上是一个字符串，而不是一个 Symbol 值。
+
+同理，在对象的内部，使用 Symbol 值定义属性时，Symbol 值必须放在方括号之中。
+
+```js
+let s = Symbol();
+let obj = {
+  [s]: function (arg) { ... }
+};
+obj[s](123);
+```
+
+## 遍历
+Symbol 作为属性名，遍历对象的时候，该属性不会出现在 for...in、for...of 循环中，也不会被 Object.keys()、Object.getOwnPropertyNames()、JSON.stringify() 返回。
+但是，它也不是私有属性，有一个 Object.getOwnPropertySymbols() 方法，可以获取指定对象的所有 Symbol 属性名。该方法返回一个数组，成员是当前对象的所有用作属性名的 Symbol 值。
+```js
+const obj = {};
+let a = Symbol('a');
+let b = Symbol('b');
+
+obj[a] = 'Hello';
+obj[b] = 'World';
+
+const objectSymbols = Object.getOwnPropertySymbols(obj);
+
+console.log(objectSymbols);
+// [Symbol(a), Symbol(b)]
+```
+
+## Symbol.for()
+有时，我们希望重新使用同一个 Symbol 值，Symbol.for()方法可以做到这一点。它接受一个字符串作为参数，然后搜索有没有以该参数作为名称的 Symbol 值。如果有，就返回这个 Symbol 值，否则就新建一个以该字符串为名称的 Symbol 值，并将其注册到全局。比如，如果你调用 Symbol.for("cat") 30 次，每次都会返回同一个 Symbol 值，但是调用 Symbol("cat") 30 次，会返回 30 个不同的 Symbol 值。
+```js
+let s1 = Symbol.for('foo');
+let s2 = Symbol.for('foo');
+
+console.log(s1 === s2); // true
+```
+
+## Symbol.keyFor()
+Symbol.keyFor()方法返回一个已登记的 Symbol 类型值的key。
+```js
+let s1 = Symbol.for("foo");
+console.log(Symbol.keyFor(s1)); // "foo"
+
+let s2 = Symbol("foo");
+console.log(Symbol.keyFor(s2)); // undefined
+```
+上面代码中，变量s2属于未登记的 Symbol 值，所以返回 undefined。
+
 # Object
 在计算机科学中，对象是指内存中的可以被标识符引用的一块区域。在 JavaScript 里，对象可以被看作是一组属性的集合。一个 JavaScript 对象就是键和值之间的映射。**键是一个字符串（或者 Symbol）**，值可以是任意类型的值。
 ECMAScript 定义的对象中有两种属性：数据属性和访问器属性。
@@ -73,3 +223,8 @@ ECMAScript 定义的对象中有两种属性：数据属性和访问器属性。
 2、undefined 和 null 被转换为布尔值的时候，两者都为 false。
 3、undefined 和 null 进行 == 比较时两者相等，进行 === 比较时两者不等。
 4、使用 Number() 对 undefined 和 null 进行类型转换，undefined 是 NaN，null 是 0。
+
+参考资料：
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures
+https://es6.ruanyifeng.com/#docs/symbol
+https://blog.csdn.net/weixin_42213025/article/details/105809018
