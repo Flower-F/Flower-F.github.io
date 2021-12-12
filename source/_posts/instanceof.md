@@ -42,4 +42,4 @@ function myInstanceof(left, right) {
 }
 ```
 
-参考资料：公众号 前端点线面
+参考资料：公众号前端点线面
