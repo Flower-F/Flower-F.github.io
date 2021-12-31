@@ -29,7 +29,7 @@ Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示
 
 # hover
 超链接访问过后 hover 样式就不出现了，被点击访问过的超链接样式不再具有 hover 和 active 了
-解决方法：改变 CSS 属性的排列顺序 L-V-H-A
+解决方法：改变 CSS 属性的排列顺序 L-V-H-A，即 link > visited > hover > active
 
 # 透明度
 IE8 以下，没有 opacity 属性
