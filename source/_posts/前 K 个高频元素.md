@@ -31,7 +31,7 @@ var topKFrequent = function (nums, k) {
 
     // 桶排
     // 这个地方有一个细节，长度是 maxSize + 1，不是 maxSize
-    // 还要此处最好将所有值设置为 null
+    // 此处最好将所有值设置为 null，以防 undefined 导致的 bug
     const bucket = new Array(maxSize + 1).fill(null);
     map.forEach((value, key) => {
         if (bucket[value] === null) {

@@ -5,7 +5,7 @@ tags: [css]
 copyright: true
 ---
 # CSS 中哪些属性是可以继承的
-- 字体相关的属性，font-size 和font-weight 等
+- 字体相关的属性，font-size 和 font-weight 等
 - 文本相关的属性，color、line-height 和 text-align
 - 光标属性 cursor
 - 元素可见性 visibility

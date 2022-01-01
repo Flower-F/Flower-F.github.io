@@ -53,9 +53,8 @@ copyright: true
 ![](https://cdn.jsdelivr.net/gh/Flower-F/picture@main/img/163032.jpg)
 - 解析 HTML 形成 DOM 树
 - 解析 CSS 形成 CSSOM 树
-- 转换样式，比如将 em 转换为px，color 转换为 rgb 格式；然后计算每个节点的具体样式
 - 根据 DOM 树和 CSSOM 树构建渲染树
-  - 从 DOM 树的根节点遍历所有可见节点，不可见节点包括：script、meta这样本身不可见的标签；被css隐藏的节点，如 `display: none`
+  - 从 DOM 树的根节点遍历所有可见节点，不可见节点包括：script、meta 这样本身不可见的标签；被 CSS 隐藏的节点，如 `display: none`
   - 根据 CSSOM 规则计算样式
 - JS 解析
 - 浏览器开始渲染并绘制页面
