@@ -1,7 +1,7 @@
 ---
 title: 引爆最多的炸弹
 date: 2021-12-12 00:46:37
-tags: [算法, 周赛]
+tags: [算法, leetcode]
 copyright: true
 ---
 题目链接：
