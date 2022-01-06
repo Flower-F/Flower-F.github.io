@@ -1,5 +1,5 @@
 ---
-title: LRU缓存机制
+title: LRU 缓存机制
 date: 2021-12-24 09:28:55
 tags: [算法, leetcode]
 copyright: true

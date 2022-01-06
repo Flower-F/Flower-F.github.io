@@ -1,5 +1,5 @@
 ---
-title: link 和 @import 的区别.md
+title: link 和 @import 的区别
 date: 2021-12-30 21:47:07
 tags: [css]
 copyright: true

@@ -1,5 +1,5 @@
 ---
-title: 找到和最大的长度为K的子序列
+title: 找到和最大的长度为 K 的子序列
 date: 2021-12-12 00:32:10
 tags: [算法, 周赛]
 copyright: true

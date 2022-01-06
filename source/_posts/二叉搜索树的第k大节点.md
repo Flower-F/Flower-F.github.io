@@ -1,5 +1,5 @@
 ---
-title: 二叉搜索树的第k大节点
+title: 二叉搜索树的第 K 大节点
 date: 2021-12-08 20:59:51
 tags: [算法, codetop]
 copyright: true

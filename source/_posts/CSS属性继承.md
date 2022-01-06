@@ -1,5 +1,5 @@
 ---
-title: CSS属性继承
+title: CSS 属性继承
 date: 2021-12-30 16:08:07
 tags: [css]
 copyright: true

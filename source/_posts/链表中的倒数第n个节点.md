@@ -1,5 +1,5 @@
 ---
-title: 链表中的倒数第n个节点
+title: 链表中的倒数第 N 个节点
 date: 2021-12-03 18:42:26
 tags: [算法, codetop]
 copyright: true

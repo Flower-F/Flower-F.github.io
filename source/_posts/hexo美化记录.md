@@ -1,5 +1,5 @@
 ---
-title: hexo美化记录
+title: hexo 美化记录
 date: 2021-12-01 15:25:07
 tags: hexo
 copyright: true
