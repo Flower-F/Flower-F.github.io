@@ -1,5 +1,5 @@
 ---
-title: js 常见小知识简答
+title: js 常见知识清单
 date: 2022-01-06 12:16:32
 tags: [javascript, 连载]
 copyright: true
