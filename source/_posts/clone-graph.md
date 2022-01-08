@@ -49,8 +49,4 @@ function cloneGraph(node: Node | null): Node | null {
 ```
 
 参考题解：
-作者：chen-wei-f
-链接：
 https://leetcode-cn.com/problems/clone-graph/solution/133-ke-long-tu-by-chen-wei-f-2chn/
-来源：力扣（LeetCode）
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

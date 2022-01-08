@@ -38,15 +38,6 @@ var isRectangleOverlap = function(rec1, rec2) {
 ```
 
 参考题解：
-
-1. 作者：chen-wei-f
-   链接：
-   https://leetcode-cn.com/problems/rectangle-overlap/solution/836-ju-xing-zhong-die-by-chen-wei-f-akdd/
-   来源：力扣（LeetCode）
-   著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-2. 作者：nettee
-   链接：
-   https://leetcode-cn.com/problems/rectangle-overlap/solution/tu-jie-jiang-ju-xing-zhong-die-wen-ti-zhuan-hua-we/
-   来源：力扣（LeetCode）
-   著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+1. https://leetcode-cn.com/problems/rectangle-overlap/solution/836-ju-xing-zhong-die-by-chen-wei-f-akdd/
+2. https://leetcode-cn.com/problems/rectangle-overlap/solution/tu-jie-jiang-ju-xing-zhong-die-wen-ti-zhuan-hua-we/
 

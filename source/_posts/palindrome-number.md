@@ -67,13 +67,7 @@ var isPalindrome = function(x) {
 ```
 
 参考题解：
-1. 作者：LeetCode-Solution
-   链接：
-   https://leetcode-cn.com/problems/palindrome-number/solution/hui-wen-shu-by-leetcode-solution/
+1. https://leetcode-cn.com/problems/palindrome-number/solution/hui-wen-shu-by-leetcode-solution/
    来源：力扣（LeetCode）
    著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-2. 作者：cxywushixiong
-   链接：
-   https://leetcode-cn.com/problems/palindrome-number/solution/dong-hua-hui-wen-shu-de-san-chong-jie-fa-fa-jie-ch/
-   来源：力扣（LeetCode）
-   著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+2. https://leetcode-cn.com/problems/palindrome-number/solution/dong-hua-hui-wen-shu-de-san-chong-jie-fa-fa-jie-ch/

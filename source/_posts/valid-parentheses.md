@@ -6,7 +6,7 @@ copyright: true
 ---
 题目链接：
 https://leetcode-cn.com/problems/valid-parentheses
-题解：leetcode 里面最经典的栈应用
+解法分析：leetcode 里面最经典的栈应用
 ```js
 /**
  * @param {string} s

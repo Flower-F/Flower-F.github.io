@@ -40,6 +40,4 @@ copyright: true
 src 用于**替换**当前元素，href 用于在当前文档和引用资源之间**确立联系**
 
 - src 是 source 的缩写，指向外部资源的位置，指向的内容将会**嵌入到文档中当前标签所在位置**；在请求 src 资源时会将其指向的资源下载并应用到文档内，例如 js 脚本，img 图片和 iframe 等元素
-- href 是 Hypertext Reference 的缩写，指向网络资源所在位置。如果我们在文档中添加 `<link href="common.css" rel="stylesheet"/>` 那么浏览器会识别该文档为 CSS 文件，然后**并行**下载资源并且不会停止对当前文档的处理。这也是为什么建议使用 link 方式来加载 CSS，而不是 @import 方式
-
-
+- href 是 Hypertext Reference 的缩写，指向网络资源所在位置。如果我们在文档中添加 `<link href="common.css" rel="stylesheet"/>` 那么浏览器会识别该文档为 CSS 文件，然后**并行**下载资源并且不会停止对当前文档的处理。这也是为什么建议使用 `link` 方式来加载 CSS，而不是 `@import` 方式

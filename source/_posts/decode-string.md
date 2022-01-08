@@ -82,8 +82,4 @@ function decodeString(s: string): string {
 ```
 
 参考题解：
-作者：xiao_ben_zhu
-链接：
 https://leetcode-cn.com/problems/decode-string/solution/zhan-de-ji-yi-nei-ceng-de-jie-ma-liao-bie-wang-lia/
-来源：力扣（LeetCode）
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

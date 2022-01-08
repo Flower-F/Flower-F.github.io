@@ -91,10 +91,5 @@ var rotateRight = function (head, k) {
 
 
 参考题解：
-1. 作者：lin-shen-shi-jian-lu-k
-   链接：
-   https://leetcode-cn.com/problems/rotate-list/solution/xuan-zhuan-lian-biao-tu-jie-lian-biao-zu-ku33/
-   来源：力扣（LeetCode）
-   著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-
-2. 公众号力扣加加，公众号 labuladong
+1. https://leetcode-cn.com/problems/rotate-list/solution/xuan-zhuan-lian-biao-tu-jie-lian-biao-zu-ku33/
+2. 公众号力扣加加
