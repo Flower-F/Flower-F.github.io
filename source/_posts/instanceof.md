@@ -1,5 +1,5 @@
 ---
-title: instanceof
+title: instanceof 详解
 date: 2021-12-10 13:02:22
 tags: [算法]
 copyright: true

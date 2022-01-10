@@ -1,7 +1,7 @@
 ---
 title: 从浏览器地址栏输入 URL 到显示页面的步骤
 date: 2021-12-31 14:49:14
-tags: [浏览器, 计算机网络]
+tags: [浏览器, 计算机网络, 连载]
 copyright: true
 ---
 # Chrome 架构

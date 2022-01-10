@@ -1,7 +1,7 @@
 ---
 title: js 闭包详解（译）
 date: 2022-01-06 16:43:42
-tags: [javascript]
+tags: [javascript, 翻译]
 copyright: true
 ---
 # 什么是闭包
@@ -192,6 +192,5 @@ displayNameLexicalEnvironment = {
 
 而在 `displayName` 函数的词法环境中没有变量 `name`，所以它会去外部词法环境中找，也就是还在内存中的 `person` 函数的词法环境。JavaScript 引擎查找到了变量 `name` 后，将其打印到控制台。
 
-参考链接：
 原文：
 https://blog.bitsrc.io/a-beginners-guide-to-closures-in-javascript-97d372284dda

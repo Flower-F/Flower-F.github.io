@@ -1,7 +1,7 @@
 ---
 title: js 执行上下文详解（译）
 date: 2022-01-06 12:46:33
-tags: [javascript]
+tags: [javascript, 翻译]
 copyright: true
 ---
 # 什么是执行上下文
@@ -56,6 +56,10 @@ ExecutionContext = {
 ```
 
 ## 词法环境
+词法环境是用于保存 `标识符-变量` 的映射的结构。这里标识符是指变量/函数的名称，变量是对实际对象（包括函数对象和数组对象）或基本类型的引用。
+
+简而言之，**词法环境是存储变量和对象引用的地方**。
+
 根据官方的 ES6 文档，一个词法环境由**环境记录器**和一个可能为空的**对于外部环境的引用**组成。
 
 示例：
@@ -248,9 +252,5 @@ FunctionExectionContext = {
 # 总结
 在本文中，我们讨论了 JavaScript 程序内部的执行机制。虽然学习这些概念并不是成为一名出色的 JavaScript 开发人员的必要条件，但对上述概念有一个良好的理解将有助于您更轻松、更深入地理解其他概念，如变量提升、作用域和闭包。
 
-参考资料：
-本文原文：
+原文：
 https://blog.bitsrc.io/understanding-execution-context-and-execution-stack-in-javascript-1c9ea8642dd0
-参考译文：
-https://juejin.cn/post/6844903682283143181
-https://juejin.cn/post/6844903704466833421
