@@ -24,13 +24,19 @@ top: true
 见 [var、let、const 辨析](https://flower-f.github.io/2021/12/11/var-let-const/)
 
 # bind & apply & call
-见 [call、apply、bind辨析](https://flower-f.github.io/2022/01/10/call-apply-bind)
+见 [call、apply、bind辨析（译）](https://flower-f.github.io/2022/01/10/call-apply-bind) & [手写实现 call、apply、bind](https://flower-f.github.io/2022/01/10/js-hand-write/)
 
 # Promise
 见 [Promise 详解（译）](https://flower-f.github.io/2022/01/10/js-promise/)
 
 # instanceof
 见 [instanceof 详解](https://flower-f.github.io/2021/12/10/instanceof/)
+
+# new
+见 [new 详解](https://flower-f.github.io/2022/01/11/new/)
+
+# 继承
+见 [js 继承](https://flower-f.github.io/2022/01/11/js-inherit/)
 
 # 异步工作原理
 见 [js 异步原理详解（译）](https://flower-f.github.io/2022/01/10/js-asynchronous/)

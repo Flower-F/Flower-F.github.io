@@ -111,6 +111,8 @@ document.querySelector('.btn').addEventListener('click', counter.incrementCounte
 ```
 在上面的例子中，this 会正确地指向 `counter` 对象而不是 `event` 对象。
 
+注意：多次 `bind()` 是无效的，只会绑定到第一次调用的对象上
+
 ## bind 接收多个参数
 `bind` 可以接收多个参数。
 
