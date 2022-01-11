@@ -68,7 +68,7 @@ class Promise {
                     try {
                         const x = onFulfilled(this.value);
                         // resolvePromise 函数，处理自己 return 的 promise 和默认的 promise2 的关系
-                        resolvePromise(promise2, x, resolve, reject);
+                        this.resolvePromise(promise2, x, resolve, reject);
                     } catch (error) {
                         reject(error);
                     }
@@ -78,7 +78,7 @@ class Promise {
                 setTimeout(() => {
                     try {
                         const x = onRejected(this.reason);
-                        resolvePromise(promise2, x, resolve, reject);
+                        this.resolvePromise(promise2, x, resolve, reject);
                     } catch (error) {
                         reject(error);
                     }
@@ -89,7 +89,7 @@ class Promise {
                     setTimeout(() => {
                         try {
                             const x = onFulfilled(this.value);
-                            resolvePromise(promise2, x, resolve, reject);
+                            this.resolvePromise(promise2, x, resolve, reject);
                         } catch (error) {
                             reject(error);
                         }
@@ -99,7 +99,7 @@ class Promise {
                     setTimeout(() => {
                         try {
                             const x = onRejected(this.reason);
-                            resolvePromise(promise2, x, resolve, reject);
+                            this.resolvePromise(promise2, x, resolve, reject);
                         } catch (error) {
                             reject(error);
                         }
@@ -126,7 +126,7 @@ class Promise {
                         if (called) return;
                         called = true;
                         // resolve 的结果依旧是 promise 那就继续解析
-                        resolvePromise(promise2, y, resolve, reject);
+                        this.resolvePromise(promise2, y, resolve, reject);
                     }, error => {
                         if (called) return;
                         called = true;
@@ -145,6 +145,21 @@ class Promise {
         }
     }
 };
+```
+
+完成书写以后，可以使用 npm 包 `promises-aplus-tests` 进行测试。
+
+测试前需要加上这几行代码：
+```js
+Promise.defer = Promise.deferred = function () {
+    let dfd = {}
+    dfd.promise = new Promise((resolve,reject)=>{
+        dfd.resolve = resolve;
+        dfd.reject = reject;
+    });
+    return dfd;
+}
+module.exports = Promise;
 ```
 
 # Promise.resolve
