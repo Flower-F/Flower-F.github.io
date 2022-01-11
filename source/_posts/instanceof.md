@@ -1,7 +1,7 @@
 ---
 title: instanceof 详解
 date: 2021-12-10 13:02:22
-tags: [算法]
+tags: [javascript, 手写]
 copyright: true
 ---
 题目链接：

@@ -1,7 +1,7 @@
 ---
 title: 手写实现 call、apply、bind
 date: 2022-01-10 23:28:46
-tags: [javascript]
+tags: [javascript, 手写]
 copyright: true
 ---
 # call

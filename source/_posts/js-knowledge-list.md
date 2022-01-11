@@ -27,7 +27,7 @@ top: true
 见 [call、apply、bind辨析（译）](https://flower-f.github.io/2022/01/10/call-apply-bind) & [手写实现 call、apply、bind](https://flower-f.github.io/2022/01/10/js-hand-write/)
 
 # Promise
-见 [Promise 详解（译）](https://flower-f.github.io/2022/01/10/js-promise/)
+见 [Promise 详解（译）](https://flower-f.github.io/2022/01/10/js-promise/) & [手写 Promise](https://flower-f.github.io/2022/01/11/hand-write-promise/)
 
 # instanceof
 见 [instanceof 详解](https://flower-f.github.io/2021/12/10/instanceof/)
@@ -37,6 +37,9 @@ top: true
 
 # 继承
 见 [js 继承](https://flower-f.github.io/2022/01/11/js-inherit/)
+
+# 事件机制
+见 [js 事件机制](https://flower-f.github.io/2022/01/11/js-event/)
 
 # 异步工作原理
 见 [js 异步原理详解（译）](https://flower-f.github.io/2022/01/10/js-asynchronous/)

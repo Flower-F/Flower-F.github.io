@@ -1,7 +1,7 @@
 ---
 title: new 详解
 date: 2022-01-11 12:07:09
-tags: [javascript]
+tags: [javascript, 手写]
 copyright: true
 ---
 # new 关键字做了什么
