@@ -9,12 +9,15 @@ top: true
 见 [js 数据类型](https://flower-f.github.io/2021/12/11/js-data-types/)
 
 # 执行上下文
+相关知识：词法环境、调用栈
 见 [js 执行上下文详解（译）](https://flower-f.github.io/2022/01/06/execution-context/)
 
 # 闭包
+相关知识：词法作用域、执行上下文、词法环境
 见 [js 闭包详解（译）](https://flower-f.github.io/2022/01/06/closure/)
 
 # 作用域和作用域链
+相关知识：词法环境
 见 [js 作用域和作用域链详解（译）](https://flower-f.github.io/2022/01/10/js-scope-and-scope-chain/)
 
 # 遍历方法
@@ -42,4 +45,5 @@ top: true
 见 [js 事件机制](https://flower-f.github.io/2022/01/11/js-event/)
 
 # 异步工作原理
+相关知识：执行上下文、词法环境、事件循环
 见 [js 异步原理详解（译）](https://flower-f.github.io/2022/01/10/js-asynchronous/)
