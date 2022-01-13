@@ -28,14 +28,18 @@ function levelOrder(root) {
         return [];
     }
     const res = [], queue = [];
-    
     queue.push(root);
+
+    // 从上到下遍历每一层
     while (queue.length) {
         const currentLevelSize = queue.length;
         res.push([]);
+        // 从左到右遍历该层的所有结点
         for (let i = 0; i < currentLevelSize; i++) {
             const node = queue.shift();
             res[res.length - 1].push(node.val);
+
+            // 将下一层的结点放入队列
             node.left && queue.push(node.left);
             node.right && queue.push(node.right);
         }
