@@ -1,5 +1,5 @@
 ---
-title: 使用 eslint、prettier、commitlint 打造 React 开发规范
+title: 使用 Eslint、Prettier、Commitlint 打造 React 开发规范
 date: 2022-01-12 23:39:32
 tags: [react]
 copyright: true
