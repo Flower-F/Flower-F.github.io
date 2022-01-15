@@ -19,7 +19,7 @@ var lengthOfLongestSubstring = function(s) {
     for (let i = 0; i < s.length; i++) {
         // 若出现重复字符
         if (map.has(s[i])) {
-            // 比如对于字符串 abac，当前有效最长子段是 abc，接着我们又遍历到第二个 a
+            // 比如对于字符串 abca，当前有效最长子段是 abc，接着我们又遍历到第二个 a
             // 那么此时更新 left 为 map.get(a) + 1 = 1，当前有效子段就更新为了 bca
             left = Math.max(left, map.get(s[i]) + 1);
         }
