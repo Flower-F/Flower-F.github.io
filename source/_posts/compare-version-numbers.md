@@ -34,4 +34,34 @@ var compareVersion = function (version1, version2) {
 ```
 
 2. 双指针
-等过几天我考完笔试就补上
+用于优化空间复杂度
+
+```js
+/**
+ * @param {string} version1
+ * @param {string} version2
+ * @return {number}
+ */
+var compareVersion = function(version1, version2) {
+    const len1 = version1.length, len2 = version2.length;
+    let i = 0, j = 0;
+    while (i < len1 || j < len2) {
+        let x = 0;
+        for (; i < len1 && version1[i] !== '.'; i++) {
+            x = x * 10 + parseInt(version1[i]);
+        }
+        i++; // 跳过 .
+        let y = 0;
+        for (; j < len2 && version2[j] !== '.'; j++) {
+            y = y * 10 + parseInt(version2[j]);
+        }
+        j++; // 跳过 .
+        if (x > y) {
+            return 1;
+        } else if (x < y) {
+            return -1;
+        }
+    }
+    return 0;
+};
+```

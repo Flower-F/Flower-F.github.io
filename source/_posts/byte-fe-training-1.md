@@ -222,6 +222,6 @@ img {
 
 ![](https://cdn.jsdelivr.net/gh/Flower-F/picture@main/img/20220115212154.png)
 
-# 0.5px 问题
+# Chrome 文本小于 12px 如何解决
 Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示。
 可以使用 `transform: scale(xx);` 解决。
