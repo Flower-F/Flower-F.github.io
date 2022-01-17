@@ -1,5 +1,5 @@
 ---
-title: 字节前端青训营第 2 天（上）
+title: 字节前端青训营第 2 天
 date: 2022-01-16 14:04:55
 tags: [javascript]
 copyright: true
@@ -111,7 +111,7 @@ btn.addEventListener('click', e => {
 举个例子：
 ```html
 <ul>
-    <li >任务一：学习 html</li>
+    <li>任务一：学习 html</li>
     <li>任务二：学习 css</li>
     <li>任务三：学习 JavaScript</li>
 </ul>
@@ -131,7 +131,7 @@ liElems.forEach(liElem => {
 </script>
 ```
 
-假设我们现在有三个任务需要完成，我们完成了其中一个所以要点击删除它。现在点击其中一个，他将会在 2s 之后完成删除，但是假如我们在这过程中再次点击这个这一项，就会出现报错：
+假设我们现在有三个任务需要完成，我们完成了其中一个所以要点击删除它。现在点击其中一个，他将会在 2s 之后完成删除，但是假如我们在这过程中再次点击这一项，就会出现报错：
 
 ![](https://cdn.jsdelivr.net/gh/Flower-F/picture@main/img/20220116202742.png)
 

@@ -186,26 +186,28 @@ var lengthOfLIS = function(nums) {
         if (nums[i] > ans[ans.length - 1]) {
             ans.push(nums[i]);
         } else {
-            // 二分插入
+            // 二分，查找最左边满足条件的值的下标
             let left = 0, right = ans.length - 1;
-            while (left < right) {
+            let targetIndex;
+            while (left <= right) {
                 const mid = (left + right) >> 1;
-                if (ans[mid] < nums[i]) {
-                    left = mid + 1;
+                if (ans[mid] >= nums[i]) {
+                    // 满足条件
+                    // 因为查找的是最左的满足条件的元素，所以是收缩右边界
+                    right = mid - 1;
+                    targetIndex = mid;
                 } else {
-                    right = mid;
+                    left = mid + 1;
                 }
             }
             // 用它覆盖掉比它大的元素中最小的那个
-            ans[left] = nums[i];
+            ans[targetIndex] = nums[i];
         }
     }
 
     return ans.length;
 };
 ```
-
-
 
 参考资料：
 1. https://labuladong.gitee.io/algo/3/23/70/
