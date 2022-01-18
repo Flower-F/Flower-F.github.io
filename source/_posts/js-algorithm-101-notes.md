@@ -1,10 +1,10 @@
 ---
 title: js 版算法 101 笔记
 date: 2022-01-17 10:59:29
-tags: [javascript, 算法, 连载]
+tags: [javascript, 算法, leetcode, 连载]
 copyright: true
 ---
-来源于[政采云前端团队](https://101.zoo.team/)
+本文题目列表来源于[政采云前端团队](https://101.zoo.team/)，题源来源于[力扣](https://leetcode-cn.com/)。
 
 # 字符串
 ## [整数反转](https://leetcode-cn.com/problems/reverse-integer/)
@@ -413,3 +413,270 @@ var longestPalindrome = function(s) {
 };
 ```
 
+# 数学
+## [罗马数字转整数](https://leetcode-cn.com/problems/roman-to-integer/)
+先遍历所有罗马数字进行累加，对于特殊数字的循环，比如：5 + 1 = 6，而实际是 4，相差 2，所以需要在结果上减去 2。
+
+```js
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var romanToInt = function(s) {
+  let res = 0;
+  for (const ch of s) {
+    switch (ch) {
+      case 'I':
+        res += 1;
+        break;
+      case 'V':
+        res += 5;
+        break;
+      case 'X':
+        res += 10;
+        break;
+      case 'L':
+        res += 50;
+        break;
+      case 'C':
+        res += 100;
+        break;
+      case 'D':
+        res += 500;
+        break;
+      case 'M':
+        res += 1000;
+        break;
+      default:
+        break;
+    }
+  }
+
+  if (s.includes('IV') || s.includes('IX')) res -= 2;
+  if (s.includes('XL') || s.includes('XC')) res -= 20;
+  if (s.includes('CD') || s.includes('CM')) res -= 200;
+
+  return res;
+};
+```
+
+## [Fizz Buzz](https://leetcode-cn.com/problems/fizz-buzz/)
+
+```js
+/**
+ * @param {number} n
+ * @return {string[]}
+ */
+var fizzBuzz = function(n) {
+  const arr = [];
+  for (let i = 1; i <= n; i += 1) {
+    let str = '';
+    if (i % 3 === 0) {
+      str += 'Fizz';
+    }
+    if (i % 5 === 0) {
+      str += 'Buzz';
+    }
+    if (i % 3 !== 0 && i % 5 !== 0) {
+      str += i;
+    }
+    arr.push(str);
+  }
+  return arr;
+};
+```
+
+## [计数质数](https://leetcode-cn.com/problems/count-primes/)
+
+- 枚举，超出时间限制
+```js
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var countPrimes = function(n) {
+  let count = 0;
+  for (let i = 2; i < n; i++) {
+    if (isPrime(i)) {
+      count++;
+    }
+  }
+  return count;
+
+  function isPrime(num) {
+    for (let i = 2; i * i <= num; i++) {
+      if (num % i === 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+};
+```
+
+- 埃拉筛
+这个算法的推导由来可以看[labuladong](https://labuladong.gitee.io/algo/4/30/118/)。这个算法的复杂度是 `O(N * loglogN)`
+```js
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var countPrimes = function(n) {
+  const isPrime = new Array(n).fill(true);
+  for (let i = 2; i * i < n; i++) {
+    if (isPrime[i]) {
+      // i 的倍数不可能是素数，每次 j += i
+      // 从 i * i 开始，因为前面的数字已经算过了
+      for (let j = i * i; j < n; j += i) {
+        isPrime[j] = false;
+      }
+    }
+  }
+
+  let count = 0;
+  for (let i = 2; i < n; i++) {
+    if (isPrime[i]) {
+      count++;
+    }
+  }
+
+  return count;
+};
+```
+
+## [3 的幂](https://leetcode-cn.com/problems/power-of-three/)
+循环和递归都很简单，不说了，还有一种骚操作。
+在题目给定的 32 位有符号整数的范围内，最大的 3 的幂为 3 ^ 19 = 1162261467。我们只需要判断 n 是否是这个数的约数即可。
+
+```js
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var isPowerOfThree = function(n) {
+  return n > 0 && 1162261467 % n === 0;
+};
+```
+
+## [Excel 表列名称](https://leetcode-cn.com/problems/excel-sheet-column-title/)
+和正常 0 ~ 25 的 26 进制相比，本质上就是每一位多加了 1，所以只要在处理每一位的时候先减 1，就可以按照正常的 26 进制来处理。
+```js
+/**
+ * @param {number} columnNumber
+ * @return {string}
+ */
+var convertToTitle = function(columnNumber) {
+  const res = [];
+
+  while (columnNumber) {
+    columnNumber--;
+    const temp = String.fromCharCode((columnNumber % 26) + 65); // 65 是 A 对应的 Char Code
+    res.push(temp);
+    columnNumber = Math.floor(columnNumber / 26);
+  }
+
+  return res.reverse().join('');
+};
+```
+
+## [Excel 表列序号](https://leetcode-cn.com/problems/excel-sheet-column-number/)
+```js
+/**
+ * @param {string} columnTitle
+ * @return {number}
+ */
+var titleToNumber = function(columnTitle) {
+  let sum = 0;
+  let i = columnTitle.length - 1;
+
+  let carry = 1; // 进制
+  while (i >= 0) {
+    // 因为 A 表示 1，所以减法后需要每个数加 1，相当于减去 65，再加上 1
+    const cur = columnTitle[i].charCodeAt(0) - 64;
+    sum += cur * carry;
+    carry *= 26;
+    i--;
+  }
+
+  return sum;
+};
+```
+
+## [快乐数](https://leetcode-cn.com/problems/happy-number/)
+首先我们需要清楚，快乐数的计算是可能会导致死循环出现的。遇到判断某个可能的死循环是否满足一定的条件，我们可以使用快慢指针，比如链表的经典题目**判断链表是否有环**。
+
+```js
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var isHappy = function(n) {
+  let slow = n, fast = n;
+
+  do {
+    // slow 执行一遍， fast 连续执行两遍
+    slow = calculateSum(slow);
+    fast = calculateSum(fast);
+    fast = calculateSum(fast);
+  } while(slow !== fast)
+
+  return slow === 1;
+  
+  function calculateSum(num) {
+    let sum = 0;
+    while (num) {
+      const bit = num % 10;
+      sum += bit * bit;
+      num = Math.floor(num / 10);
+    }
+    return sum;
+  }
+};
+```
+
+## [阶乘后的零](https://leetcode-cn.com/problems/factorial-trailing-zeroes/)
+
+- 暴力
+1. 尾数中有 0 必定是是 10 的倍数
+2. 尾数中有多少个 0 就就是整个数能有多少个因子 10
+3. 因子 10 又可以拆成  ，因此就是找整个数字可以拆分成多少了  
+因为在因子中 2 的数量一定比 5 多，所以实际上我们只要找到因子 5 的个数就可以找到尾数中 0 的个数了，所以这个问题就可以转换成找因子 5 的个数。
+```js
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var trailingZeroes = function(n) {
+  let ans = 0;
+  for (let i = 1; i <= n; i++) {
+    let x = i;
+    while (x !== 0 && x % 5 === 0) {
+      ans++;
+      x = Math.floor(x / 5);
+    }
+  }
+
+  return ans;
+};
+```
+
+- 优化版本
+1. n! 这些乘数中，每隔 5 个数，肯定会有一个数至少能拆出一个 5 因子。所以 n / 5 = 至少会出现的 5 的个数
+2. 因为 n / 5 并不能完全算出 5 因子的个数，比如若某个数 25 = 5 * 5，分解后得到的 5 也算一个，所以能被 25 因式分解相当于会出现 2 个 5 因子
+3. 依此类推，能被 25 * 5 = 125 因式分解的相当于比之前按 25 因式分解的时候又多出一个 5 因子。能被 125 * 5 = 625 因式分解的相当于比按 125 因式分解时又多出一个 5 因子。还有 625 * 5 ...
+所以 n! 的结果可以拆分为多少个 5 因子呢？
+显然就是 n/5 + n/25 + n/125 + n/625 + ...
+```js
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var trailingZeroes = function(n) {
+  let ans = 0;
+  while (n > 0) {
+    n = Math.floor(n / 5);
+    ans += n;
+  }
+  return ans;
+};
+```

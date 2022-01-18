@@ -1,7 +1,7 @@
 ---
 title: 为什么 React 要发明 Hooks
 date: 2022-01-18 12:50:34
-tags: [React]
+tags: [react]
 copyright: true
 ---
 本文为[React Hooks 核心原理与实战](https://time.geekbang.org/column/article/378311)阅读笔记
