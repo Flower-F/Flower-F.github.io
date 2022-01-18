@@ -7,7 +7,7 @@ copyright: true
 # 创建应用
 首先使用脚手架 `create-react-app` 创建应用
 ```bash
-yarn create-react-app --template typescript
+yarn create react-app project-name --template typescript
 ```
 
 # 添加 baseUrl
