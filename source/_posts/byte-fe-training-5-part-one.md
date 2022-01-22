@@ -63,6 +63,7 @@ copyright: true
 
 ## HTTP/3（QUIC 协议）
 
+- Quick UDP Internet Connection 
 - 基于 UDP 实现了类似 TCP 的流量控制、可靠传输机制
 - 集成了 TLS 安全加密
 - 实现了 HTTP/2 多路复用技术，QUIC 实现了在同一个物理连接中可以有多个独立的逻辑数据流，实现了数据流单独传输，解决了 TCP 队头阻塞的问题
