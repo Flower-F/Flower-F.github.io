@@ -9,6 +9,7 @@ copyright: true
 # 冒泡排序
 
 冒泡排序的基本思想是，**对相邻的元素进行两两比较**，顺序相反则进行交换，这样，每一趟会将最小或最大的元素“浮”到顶端，最终达到完全有序。
+
 ```js
 function bubbleSort(arr) {
     const len = arr.length;
@@ -144,53 +145,54 @@ function merge(arr1, arr2) {
 # 快速排序
 
 快速排序的基本思想是通过一趟排序将要排序的数据**分割成独立的两部分**，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。
+
 ```js
 function quickSort(arr, left = 0, right = arr.length - 1) {
-    const len = arr.length;
-    if (!Array.isArray(arr) || len <= 1) {
-        return arr;
-    }
-
-    const index = partion(arr, left, right);
-    if (left < index - 1) {
-        // [left, index - 1]
-        quickSort(arr, left, index - 1);
-    }
-    if (index < right) {
-        // [index, right]
-        quickSort(arr, index, right);
-    }
-
+  const len = arr.length;
+  if (!Array.isArray(arr) || len <= 1) {
     return arr;
+  }
+  if (left < right) {
+    const index = partion(arr, left, right);
+    quickSort(arr, left, index - 1);
+    quickSort(arr, index + 1, right);
+  }
+
+  return arr;
 }
 
 // 以基准值为轴心，划分左右子数组的过程
 function partion(arr, left, right) {
-    if (right > left) {
-        // 随机快排，防止遇到有序数组导致复杂度降到 n 方
-        let randomIndex = Math.floor(Math.random() * (right - left)) + left + 1;
-        [arr[left], arr[randomIndex]] = [arr[randomIndex], arr[left]];
-    }
+  if (right > left) {
+    // 随机快排，防止遇到有序数组导致复杂度降到 n 方
+    let randomIndex = Math.floor(Math.random() * (right - left)) + left + 1;
+    [arr[left], arr[randomIndex]] = [arr[randomIndex], arr[left]];
+  }
 
-    const pivot = arr[left];
-    let i = left, j = right;
+  const pivot = arr[left];
+  let i = left, j = right;
 
-    while (i < j) {
-        // 此处必须先移动 j 后移动 i
-        while (i < j && arr[j] >= pivot) j--;
-        while (i < j && arr[i] <= pivot) i++;
+  while (i < j) {
+    // 此处必须先移动 j 后移动 i
+    while (i < j && arr[j] >= pivot) j--;
+    while (i < j && arr[i] <= pivot) i++;
 
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
 
-    [arr[i], arr[left]] = [arr[left], arr[i]];
-    return i;
+  [arr[i], arr[left]] = [arr[left], arr[i]];
+  return i;
 }
+
+const ans = quickSort([5, 1, 1, 2, 0, 0]);
+
+console.log(ans);
 ```
 
 # 堆排序
 
 堆排序的基本思想是：将待排序序列构造成一个大顶堆，此时，**整个序列的最大值就是堆顶的根节点**。将其与末尾元素进行交换，此时末尾就为最大值。然后将剩余 n - 1 个元素重新构造成一个堆，这样会得到 n 个元素的次小值。如此反复执行，便能得到一个有序序列了。
+
 ```js
 function heapSort(arr) {
     const len = arr.length;
