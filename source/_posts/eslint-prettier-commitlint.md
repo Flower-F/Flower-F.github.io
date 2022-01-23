@@ -44,6 +44,10 @@ npx mrm@2 lint-staged
 yarn add eslint-config-prettier -D
 ```
 
+修改 package.json，在 lint-staged 配置项中增加 ts 和 tsx 选项
+
+![](https://cdn.jsdelivr.net/gh/Flower-F/picture@main/img/20220123222007.png)
+
 # 添加 commitlint
 [commitlint github 链接](https://github.com/conventional-changelog/commitlint)
 
@@ -52,9 +56,9 @@ yarn add eslint-config-prettier -D
 yarn add @commitlint/config-conventional @commitlint/cli -D
 ```
 
-根目录新建文件 commitlint.config.js，添加如下内容
+根目录新建文件 **commitlint.config.js**，添加如下内容
 ```js
-module.exports = {extends: ['@commitlint/config-conventional']
+module.exports = { extends: ['@commitlint/config-conventional'] }
 ```
 
 运行命令
