@@ -44,9 +44,13 @@ npx mrm@2 lint-staged
 yarn add eslint-config-prettier -D
 ```
 
-修改 package.json，在 lint-staged 配置项中增加 ts 和 tsx 选项
+修改 package.json，在 lint-staged 配置项中增加 ts 和 tsx 选项（可自行选择其余拓展名）
 
 ![](https://cdn.jsdelivr.net/gh/Flower-F/picture@main/img/20220123222007.png)
+
+修改 package.json，添加 prettier 拓展。
+
+![](https://cdn.jsdelivr.net/gh/Flower-F/picture@main/img/20220125103608.png)
 
 # 添加 commitlint
 [commitlint github 链接](https://github.com/conventional-changelog/commitlint)
