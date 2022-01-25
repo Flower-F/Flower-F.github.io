@@ -1223,9 +1223,11 @@ ts-loader 如果出现数据类型错误，会在 build 的时候暴露；而 ba
 
 # 分离生产和开发环境
 
-在根目录下新建文件夹 config，然后在 config 文件夹下新建 3 个文件 webpack.common.js、webpack.dev.js、webpack.prod.js。修改 package.json 中的脚本命令：
+修改 package.json 中的脚本命令：
 
-![](https://cdn.jsdelivr.net/gh/Flower-F/picture@main/img/20220125123910.png)
+![](https://cdn.jsdelivr.net/gh/Flower-F/picture@main/img/20220125150959.png)
+
+在根目录下新建文件夹 config，然后在 config 文件夹下新建 3 个文件 webpack.common.js、webpack.dev.js、webpack.prod.js。
 
 安装 webpack-merge，来进行文件合并。
 
@@ -1355,4 +1357,28 @@ module.exports = merge(common, {
 });
 ```
 
-目前存在的问题是每次打包之前都需要把 babel.config.js 中的 `plugins: [["react-refresh/babel"]],` 这一行代码删除，后面我再看看有没有其它解决方案。
+修改 babel.config.js，区分生产和开发环境：
+
+```js
+const isDev = process.env.NODE_ENV !== "production";
+
+const config = {
+  presets: [
+    [
+      "@babel/preset-env",
+      {
+        useBuiltIns: "entry",
+        corejs: 3,
+      },
+    ],
+    ["@babel/preset-react"],
+    ["@babel/preset-typescript"],
+  ],
+};
+
+if (isDev) {
+  config.plugins = [["react-refresh/babel"]];
+}
+
+module.exports = config;
+```
