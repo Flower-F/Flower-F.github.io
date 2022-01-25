@@ -4,12 +4,14 @@ date: 2022-01-24 11:33:05
 tags: [webpack, 连载]
 copyright: true
 ---
+本文对应[仓库地址](https://github.com/Flower-F/webpack-learning/tree/main/webpack-basics)
+
 # webpack 初体验
 
 运行命令初始化 package.json。
 
 ```bash
-npm init -y
+yarn init -y
 ```
 
 安装 webpack 和 webpack-cli。
