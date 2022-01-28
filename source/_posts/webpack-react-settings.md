@@ -81,6 +81,7 @@ module.exports = {
             loader: "css-loader",
             options: {
               esModule: false,
+              module: true,
             },
           },
           "postcss-loader",
@@ -88,12 +89,25 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              esModule: false,
+              modules: {
+                localIdentName: "[name]__[local]--[hash:base64:5]",
+              },
+            },
+          },
+          "postcss-loader",
+          "sass-loader",
+        ],
       },
       {
         test: /\.tsx?$/i,
         use: ["babel-loader"],
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.(png|svg|gif|jpe?g)$/i,
@@ -117,7 +131,7 @@ module.exports = {
       {
         test: /\.jsx?$/i,
         use: ["babel-loader"],
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
     ],
   },
@@ -225,7 +239,7 @@ module.exports = config;
 # 安装 loader
 
 ```bash
-yarn add sass-loader css-loader postcss-loader postcss style-loader babel-loader -D
+yarn add sass sass-loader css-loader postcss-loader postcss style-loader babel-loader -D
 ```
 
 # 安装 plugin
@@ -272,11 +286,17 @@ yarn add webpack-dev-server -D
 yarn add webpack-merge -D
 ```
 
+# 安装 cross-env
+
+```bash
+yarn add cross-env -D
+```
+
 # 配置脚本命令
 
 ```json
 "scripts": {
   "build": "cross-env NODE_ENV=production npx webpack --config ./config/webpack.prod.js",
-  "start": "tsc --noEmit && cross-env NODE_ENV=development npx webpack serve --config ./config/webpack.dev.js"
+  "start": "cross-env NODE_ENV=development npx webpack serve --config ./config/webpack.dev.js"
 }
 ```
