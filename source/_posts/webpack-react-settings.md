@@ -81,7 +81,6 @@ module.exports = {
             loader: "css-loader",
             options: {
               esModule: false,
-              module: true,
             },
           },
           "postcss-loader",
@@ -95,9 +94,6 @@ module.exports = {
             loader: "css-loader",
             options: {
               esModule: false,
-              modules: {
-                localIdentName: "[name]__[local]--[hash:base64:5]",
-              },
             },
           },
           "postcss-loader",
