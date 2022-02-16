@@ -306,6 +306,7 @@ class Stack {
 }
 */
 
+
 class Queue {
   constructor() {
     this.stack1 = [];
