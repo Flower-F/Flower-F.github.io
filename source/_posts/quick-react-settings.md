@@ -9,7 +9,7 @@ copyright: true
 本文主要包括以下内容配置
 - creat-react-app 创建项目
 - 配置 redux
-- 配置 typescript
+- 配置 react-router
 - 配置 json-server
 - 配置 axios
 
