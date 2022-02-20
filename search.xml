@@ -23,39 +23,6 @@
       </tags>
   </entry>
   <entry>
-    <title>2021 总结和 2022 目标</title>
-    <url>/2022/01/01/from-2021-to-2022/</url>
-    <content><![CDATA[<p>去年对我而言是非常特殊的一年，也是从去年的暑假开始，我正式决定要走 web 前端的路。</p>
-<p>去年主要的学习时间都放在了前端的知识点，包括 html、css、js、webpack5、node.js、react hooks 等，但是感觉好像目前还没有哪个方向研究得比较深入。前端的知识体系庞大复杂，而且涉及到的计算机基础知识也很多，让人很容易迷失学习方向。但是通过这半年来的逐渐摸索，我也大概知道了一些主流的技术栈以及学习的方向，这算是一件让人高兴的事情。不过去年最高兴的事情还是恢复了单身（</p>
-<p>今年要开始找实习了，寒假也马上要到来了，在这画画饼做个寒假计划：</p>
-<ul>
-<li>复习前端三件套，熟悉 ES6+ 语法</li>
-<li>复习计网知识</li>
-<li>复习浏览器工作原理</li>
-<li>争取看完《代码随想录》</li>
-<li>复习 web 性能优化方法</li>
-<li>复习 react hooks + redux 的使用</li>
-<li>复习 node.js 基础</li>
-<li>复习数据库基础</li>
-<li>复习 os 基础</li>
-<li>学习重点的 react hooks 源码</li>
-<li>学习 redux 和 react-router 实现原理</li>
-<li>学习 webpack 及其重要原理</li>
-<li>熟悉 koa.js 使用并学习部分源码</li>
-<li>用 react hooks + koa.js 做一个有一定难度的小程序或者响应式网页</li>
-</ul>
-<p>备选：</p>
-<ul>
-<li>学习 three.js 基础</li>
-<li>学习 nest.js 使用</li>
-</ul>
-<p>最后，新的一年，最大的愿望就是身边的人和我都能快快乐乐的！</p>
-]]></content>
-      <tags>
-        <tag>闲聊</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTTP 基础</title>
     <url>/2022/02/16/http-basic-knowledge/</url>
     <content><![CDATA[<h1 id="五层-amp-七层"><a href="#五层-amp-七层" class="headerlink" title="五层 &amp; 七层"></a>五层 &amp; 七层</h1><p>五层：物理、链路、网络、传输、应用<br>七层：物理、链路、网络、传输、会话、表示、应用</p>
@@ -3995,6 +3962,39 @@
 ]]></content>
       <tags>
         <tag>软件架构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2021 总结和 2022 目标</title>
+    <url>/2022/01/01/from-2021-to-2022/</url>
+    <content><![CDATA[<p>去年对我而言是非常特殊的一年，也是从去年的暑假开始，我正式决定要走 web 前端的路。</p>
+<p>去年主要的学习时间都放在了前端的知识点，包括 html、css、js、webpack5、node.js、react hooks 等，但是感觉好像目前还没有哪个方向研究得比较深入。前端的知识体系庞大复杂，而且涉及到的计算机基础知识也很多，让人很容易迷失学习方向。但是通过这半年来的逐渐摸索，我也大概知道了一些主流的技术栈以及学习的方向，这算是一件让人高兴的事情。不过去年最高兴的事情还是恢复了单身（</p>
+<p>今年要开始找实习了，寒假也马上要到来了，在这画画饼做个寒假计划：</p>
+<ul>
+<li>复习前端三件套，熟悉 ES6+ 语法</li>
+<li>复习计网知识</li>
+<li>复习浏览器工作原理</li>
+<li>争取看完《代码随想录》</li>
+<li>复习 web 性能优化方法</li>
+<li>复习 react hooks + redux 的使用</li>
+<li>复习 node.js 基础</li>
+<li>复习数据库基础</li>
+<li>复习 os 基础</li>
+<li>学习重点的 react hooks 源码</li>
+<li>学习 redux 和 react-router 实现原理</li>
+<li>学习 webpack 及其重要原理</li>
+<li>熟悉 koa.js 使用并学习部分源码</li>
+<li>用 react hooks + koa.js 做一个有一定难度的小程序或者网页</li>
+</ul>
+<p>备选：</p>
+<ul>
+<li>学习 three.js 基础</li>
+<li>学习 nest.js 使用</li>
+</ul>
+<p>最后，新的一年，最大的愿望就是身边的人和我都能快快乐乐的！</p>
+]]></content>
+      <tags>
+        <tag>闲聊</tag>
       </tags>
   </entry>
   <entry>
