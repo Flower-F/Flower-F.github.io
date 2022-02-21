@@ -7,9 +7,9 @@
 <h1 id="执行上下文"><a href="#执行上下文" class="headerlink" title="执行上下文"></a>执行上下文</h1><p>相关知识：词法环境、调用栈<br>见 <a href="https://flower-f.github.io/2022/01/06/execution-context/">js 执行上下文详解（译）</a></p>
 <h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><p>相关知识：词法作用域、执行上下文、词法环境<br>见 <a href="https://flower-f.github.io/2022/01/06/closure/">js 闭包详解（译）</a></p>
 <h1 id="作用域和作用域链"><a href="#作用域和作用域链" class="headerlink" title="作用域和作用域链"></a>作用域和作用域链</h1><p>相关知识：词法环境<br>见 <a href="https://flower-f.github.io/2022/01/10/js-scope-and-scope-chain/">js 作用域和作用域链详解（译）</a></p>
-<h1 id="遍历方法"><a href="#遍历方法" class="headerlink" title="遍历方法"></a>遍历方法</h1><p>见 <a href="https://flower-f.github.io/2021/12/12/js-traversal/">js 遍历对象</a></p>
+<h1 id="遍历方法"><a href="#遍历方法" class="headerlink" title="遍历方法"></a>遍历方法</h1><p>见 <a href="https://flower-f.github.io/2021/12/13/js-traversal/">js 遍历对象</a></p>
 <h1 id="var-amp-const-amp-let"><a href="#var-amp-const-amp-let" class="headerlink" title="var &amp; const &amp; let"></a>var &amp; const &amp; let</h1><p>见 <a href="https://flower-f.github.io/2021/12/11/var-let-const/">var、let、const 辨析</a></p>
-<h1 id="bind-amp-apply-amp-call"><a href="#bind-amp-apply-amp-call" class="headerlink" title="bind &amp; apply &amp; call"></a>bind &amp; apply &amp; call</h1><p>见 <a href="https://flower-f.github.io/2022/01/10/call-apply-bind">call、apply、bind辨析（译）</a> &amp; <a href="https://flower-f.github.io/2022/01/10/js-hand-write/">手写实现 call、apply、bind</a></p>
+<h1 id="bind-amp-apply-amp-call"><a href="#bind-amp-apply-amp-call" class="headerlink" title="bind &amp; apply &amp; call"></a>bind &amp; apply &amp; call</h1><p>见 <a href="https://flower-f.github.io/2022/01/10/call-apply-bind">call、apply、bind辨析（译）</a> &amp; <a href="https://flower-f.github.io/2022/01/10/hand-write-apply-call-bind/">手写实现 call、apply、bind</a></p>
 <h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><p>见 <a href="https://flower-f.github.io/2022/01/10/js-promise/">Promise 详解（译）</a> &amp; <a href="https://flower-f.github.io/2022/01/11/hand-write-promise/">手写 Promise</a></p>
 <h1 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h1><p>见 <a href="https://flower-f.github.io/2021/12/10/instanceof/">instanceof 详解</a></p>
 <h1 id="new"><a href="#new" class="headerlink" title="new"></a>new</h1><p>见 <a href="https://flower-f.github.io/2022/01/11/new/">new 详解</a></p>
@@ -23,8 +23,43 @@
       </tags>
   </entry>
   <entry>
-    <title>HTTP 基础</title>
-    <url>/2022/02/16/http-basic-knowledge/</url>
+    <title>深浅拷贝</title>
+    <url>/2022/02/20/js-basics-review/</url>
+    <content><![CDATA[<h1 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">object.assign()</span><br></pre></td></tr></table></figure>
+
+<p>不会拷贝对象的继承属性、不会拷贝对象的不可枚举属性、可以拷贝 Symbol 类型的属性</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> target = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> source = &#123;<span class="attr">a</span>: &#123;<span class="attr">b</span>: <span class="number">1</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.assign(target, source);</span><br><span class="line"><span class="built_in">console</span>.log(target);</span><br></pre></td></tr></table></figure>
+
+<p>还有 concat、slice、拓展运算符均可以实现浅拷贝。</p>
+<p>手工实现浅拷贝：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> shallowClone = <span class="function">(<span class="params">target</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (target <span class="keyword">instanceof</span> object) &#123;</span><br><span class="line">    <span class="keyword">const</span> cloneTarget = <span class="built_in">Array</span>.isArray(target) ? [] : &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> target) &#123;</span><br><span class="line">      <span class="keyword">if</span> (target.hasOwnProperty(key)) &#123;</span><br><span class="line">        cloneTarget[key] = target[key];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cloneTarget;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> target;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h1><p>乞丐版：JSON.stringify()</p>
+<p>存在的问题：（可以结合之前文章的手写 JSON.stringify() 看）</p>
+<ul>
+<li>拷贝的对象的值中如果有函数、undefined、symbol 这几种类型，拷贝后整个键值对消失</li>
+<li>拷贝后 Date 引用类型变为字符串（调用了 toJSON）</li>
+<li>无法拷贝不可枚举的属性</li>
+<li>无法拷贝对象的原型链</li>
+<li>拷贝 RegExp 会变为空对象</li>
+<li>对象中含有 NaN、Infinity，拷贝结果会变为 null</li>
+<li>无法拷贝循环引用</li>
+</ul>
+<p>手写深拷贝：</p>
+<p>首先要了解一个方法：<code>Object. getOwnPropertyDescriptors()</code>，这个方法用于获得属性的特性</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> desc = <span class="built_in">Object</span>.getOwnPropertyDescriptors(person);</span><br><span class="line"><span class="built_in">console</span>.log(desc);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/Flower-F/picture@main/img/20220220203637.png"></p>
+<p>还有一个是 Reflect.ownKeys()，它返回一个由目标对象自身的属性键组成的数组。返回值等同于 Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target))</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> isComplexDataType = <span class="function"><span class="params">obj</span> =&gt;</span> ((<span class="keyword">typeof</span> obj === <span class="string">&#x27;object&#x27;</span> || <span class="keyword">typeof</span> obj === <span class="string">&#x27;function&#x27;</span>) &amp;&amp; obj !== <span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// WeakMap 防止内存泄漏</span></span><br><span class="line"><span class="keyword">const</span> deepClone = <span class="function">(<span class="params">obj, hash = <span class="keyword">new</span> <span class="built_in">WeakMap</span>()</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 特判 Date 和 RegExp，返回一个新对象</span></span><br><span class="line">  <span class="keyword">if</span> (obj?.constructor === <span class="built_in">Date</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>(obj);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (obj?.constructor === <span class="built_in">RegExp</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">RegExp</span>(obj);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 处理循环引用</span></span><br><span class="line">  <span class="keyword">if</span> (hash.has(obj)) &#123;</span><br><span class="line">    <span class="keyword">return</span> hash.get(obj);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 得到属性值和属性的描述</span></span><br><span class="line">  <span class="keyword">let</span> desc = <span class="built_in">Object</span>.getOwnPropertyDescriptors(obj);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 继承原型链，包括其 descriptors</span></span><br><span class="line">  <span class="keyword">let</span> cloneObj = <span class="built_in">Object</span>.create(<span class="built_in">Object</span>.getPrototypeOf(obj), desc);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 设置 hash，用于后续检测循环引用</span></span><br><span class="line">  hash.set(obj, cloneObj);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 遍历所有键值</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> <span class="built_in">Reflect</span>.ownKeys(obj)) &#123;</span><br><span class="line">    cloneObj[key] = (isComplexDataType(obj[key]) &amp;&amp; <span class="keyword">typeof</span> obj[key] !== <span class="string">&#x27;function&#x27;</span> ? deepClone(obj[key], hash) : obj[key]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> cloneObj;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 验证代码</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">num</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">str</span>: <span class="string">&#x27;string&#x27;</span>,</span><br><span class="line">  <span class="attr">boolean</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">unf</span>: <span class="literal">undefined</span>,</span><br><span class="line">  <span class="attr">nul</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">obj</span>: &#123; <span class="attr">name</span>: <span class="string">&#x27;Jack&#x27;</span>, <span class="attr">id</span>: <span class="number">1</span> &#125;,</span><br><span class="line">  <span class="attr">arr</span>: [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>],</span><br><span class="line">  <span class="attr">func</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span>) &#125;,</span><br><span class="line">  <span class="attr">date</span>: <span class="keyword">new</span> <span class="built_in">Date</span>(),</span><br><span class="line">  <span class="attr">reg</span>: <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">&#x27;/我是正则/ig&#x27;</span>),</span><br><span class="line">  [<span class="built_in">Symbol</span>(<span class="string">&#x27;我是 Symbol&#x27;</span>)]: <span class="number">1</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">&#x27;innumerable&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">enumerable</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">value</span>: <span class="string">&#x27;不可枚举&#x27;</span>,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">obj = <span class="built_in">Object</span>.create(obj, <span class="built_in">Object</span>.getOwnPropertyDescriptors(obj));</span><br><span class="line">obj.loop = obj; <span class="comment">// 循环引用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> cloneObj = deepClone(obj);</span><br><span class="line">cloneObj.arr.push(<span class="number">1234</span>);</span><br><span class="line"><span class="built_in">console</span>.log(obj);</span><br><span class="line"><span class="built_in">console</span>.log(cloneObj);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTTP 历史</title>
+    <url>/2022/02/16/http-history/</url>
     <content><![CDATA[<h1 id="五层-amp-七层"><a href="#五层-amp-七层" class="headerlink" title="五层 &amp; 七层"></a>五层 &amp; 七层</h1><p>五层：物理、链路、网络、传输、应用<br>七层：物理、链路、网络、传输、会话、表示、应用</p>
 <h1 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h1><h1 id="URI-amp-URL"><a href="#URI-amp-URL" class="headerlink" title="URI &amp; URL"></a>URI &amp; URL</h1><ul>
 <li>Uniform Resource Identifier，统一资源标识符，可以唯一标记互联网资源</li>
@@ -108,7 +143,6 @@
 <li>服务端和客户端对 HTTP 3 的支持还不完善</li>
 <li>可能会存在安全性问题</li>
 </ul>
-<h1 id="HTTP-请求头"><a href="#HTTP-请求头" class="headerlink" title="HTTP 请求头"></a>HTTP 请求头</h1><p><img src="https://cdn.jsdelivr.net/gh/Flower-F/picture@main/img/20220216224351.png"></p>
 ]]></content>
       <tags>
         <tag>计算机网络</tag>
@@ -278,7 +312,7 @@
       </tags>
   </entry>
   <entry>
-    <title>js 常见知识复习</title>
+    <title>js 手写复习</title>
     <url>/2022/02/11/js-handwrite/</url>
     <content><![CDATA[<p>题目列表来源于：<br><a href="https://bigfrontend.dev/">https://bigfrontend.dev/</a></p>
 <h1 id="参数定长柯里化"><a href="#参数定长柯里化" class="headerlink" title="参数定长柯里化"></a>参数定长柯里化</h1><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">sum(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)(<span class="number">4</span>)	<span class="comment">// 10</span></span><br><span class="line">sum(<span class="number">1</span>, <span class="number">2</span>)(<span class="number">3</span>)(<span class="number">4</span>)	<span class="comment">// 10</span></span><br><span class="line">sum(<span class="number">1</span>)(<span class="number">2</span>, <span class="number">3</span>)(<span class="number">4</span>)	<span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
