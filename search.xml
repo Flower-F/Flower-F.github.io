@@ -5350,4 +5350,34 @@
         <tag>javascript</tag>
       </tags>
   </entry>
+  <entry>
+    <title>闭包在内存中真的不会被回收吗</title>
+    <url>/2022/03/11/did-closure-not-be-recoveried/</url>
+    <content><![CDATA[<p>今天看到了一个很有趣的问题，关于闭包在内存中是否真的不会被回收，所以我也来写篇小短文谈谈我的理解。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCounter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">counter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    a = a + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> counter;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(getCounter()());</span><br><span class="line"><span class="built_in">console</span>.log(getCounter()());</span><br><span class="line"><span class="built_in">console</span>.log(getCounter()());</span><br></pre></td></tr></table></figure>
+
+<p>先看一段代码。</p>
+<p>众所周知这道题的答案是</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+
+<p><strong>然而其实不是！！！</strong></p>
+<p>这道题的正确答案是</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2</span><br><span class="line">2</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<p>的确，在 <code>getCounter</code> 函数中创建了函数 <code>counter</code>，而且在函数 <code>counter</code> 中也的的确确访问了 <code>getCounter</code> 中的变量 <code>a</code>。根据经验，此处一定会形成闭包毋庸置疑，因为 <code>getCounter</code> 的词法作用域被它内部的函数 <code>counter</code> 的词法作用域引用了。</p>
+<p>我们也可以根据控制台的打印结果看出来这里确实形成了闭包。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Flower-F/picture@main/img/20220311204446.png"></p>
+<p>问题在于<strong>执行上下文</strong>。</p>
+<p>从闭包的具体实现上来说，对于函数 <code>counter</code> 而言，闭包对象 <code>Closure (getCounter)</code> 存在于自身的 <code>[[Scopes]]</code> 属性中。也就是说，只要函数体 <code>getCounter</code> 在内存中持久存在，闭包就会持久存在。而<strong>如果函数体被回收，闭包对象同样会被回收。</strong></p>
+<p>在预解析阶段，函数声明会创建一个函数体，并在代码中持久存在。但是<strong>并非所有的函数体都能够持久存在。</strong>在上面的示例中，<code>counter</code> 函数是在 <code>getCounter</code> 函数的执行上下文中声明的，当执行上下文执行完毕，执行上下文就会被回收，那么在 <code>getCounter</code> 执行上下文中声明的 <code>counter</code> 函数也会被回收。所以显然由 <code>counter</code> 与 <code>getCounter</code> 产生的闭包也会被回收，我们每次执行 <code>getCounter()()</code>，实际上创建了不同的闭包对象。</p>
+<p>而我们平常见到的闭包版本，如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCounter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">counter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    a = a + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> counter;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myCounter = getCounter();</span><br><span class="line"><span class="built_in">console</span>.log(myCounter());</span><br><span class="line"><span class="built_in">console</span>.log(myCounter());</span><br><span class="line"><span class="built_in">console</span>.log(myCounter());</span><br></pre></td></tr></table></figure>
+
+<p>显然对于函数 <code>counter</code> 的引用会一直保存在内存中，所以我们总能访问到 <code>counter</code> 函数。</p>
+<p>回到开头的问题，答案就是：闭包对象并非不能被垃圾回收机制回收，具体仍然需要视情况而定。</p>
+]]></content>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
 </search>
